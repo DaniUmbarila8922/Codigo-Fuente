@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<title>Colombia Vive</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="styles/style.css" type="text/css"/>
+<link rel="stylesheet" href="styles/prettyphoto.css" type="text/css"/>
+<link rel="stylesheet" href="styles/totop.css" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mis_funciones.js"></script>
+    <script type="text/javascript">
+        function validar(frm) {
+            if (frm.nombre.value.length < 3) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            nom.focus();
+            return false;
+            }
+            if (frm.nombre.value.length < 3) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            nombres.focus();
+            return false;
+            }
+            if (frm.apellido.value.length < 3) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            ape.focus();
+            return false;
+            }
+            if (frm.clave.value.length < 8) {
+            alert ("El Password no Cumple con los Requisitos Debe Tener Minimo 8 Caracteres");
+            con.focus();
+            return false;
+            }
+            if (frm.rclave.value.length < 8) {
+            alert ("El Password no Cumple con los Requisitos Debe Tener Minimo 8 Caracteres");
+            con1.focus();
+            return false;
+            }
+            if (frm.cedula.value.length < 4) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            ced.focus();
+            return false;
+            }
+            if (frm.codigo.value.length < 4) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            cod.focus();
+            return false;
+            }
+            if ((frm.celular.value.length <10) & (frm.codigo.value.length <11)  ) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            tel.focus();
+            return false;
+            }
+            if (frm.correo.value.length < 4) {
+            alert ("Verifique la Longitud de los Datos Ingresados");
+            cor.focus();
+            return false;
+            }
+            
+        }
+        </script>
+</head>
+<body>
+<div class="main-container">
+    <header>
+        <h1><a href="index.html">Colombia Vive</a></h1>
+
+        <p id="tagline"><strong>Aprendiendo Historia</strong></p>
+    </header>
+</div>
+
+<div class="main-container">
+    <div id="nav-container">
+        <nav>
+            <ul class="nav">
+                <li class="active"><a href="index.html">Inicio</a></li>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li class="last"><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="main-container">
+    <div class="container1">
+        <div class="box">
+            <div>
+                <div id="header1">
+                    <h3><a href="index.html">Registre sus Datos</a></h3>
+                    <p id="tagline1"><strong>Bienvenido</strong></p>
+                </div>
+                <br>
+                <br>
+            <form id="form1" name="form1" method="post" action="registrar.php">
+            <label>Identificaci&oacute;n</label><input type="text" name="identificacion" placeholder="identificacion">
+            <label>Nombre</label><input type="text" name="nombre" placeholder="nombre" onkeypress="txNombres()">
+            <label>Apellido</label><input type="text" name="apellido" placeholder="apellido" >   
+            <br/><br/> 
+            <label>Correo</label><input  type="text" name="correo" placeholder="correo"><br/><br/>
+            <label>Usuario</label><input  type="text" name="usuario" placeholder="usuario" required=""><br/><br/>
+            <label>Contraseña</label><input class="" type="password" name="clave" placeholder="Password"\><br/><br/> 
+            <label>Confirmar Contraseña</label><input class="" type="password" name="rclave" placeholder="Password"\><br/><br/> 
+            
+            <br/><br/>    
+            <INPUT type="submit" value="Enviar">
+                </form>
+
+            <div class="clear"></div>
+
+            <br/>
+
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+    <div class="main-container">
+    </div>
+
+    <div class="callout">
+    
+        </div>
+    </div>
+    <br/>
+    <br/>
+</div>
+<script src="scripts/jquery.js" type="text/javascript"></script>
+<script src="scripts/prettyphoto.js" type="text/javascript"></script>
+<script src="scripts/jflow.js" type="text/javascript"></script>
+<script src="scripts/easing.js" type="text/javascript"></script>
+<script src="scripts/totop.js" type="text/javascript"></script>
+<script src="scripts/superfish.js" type="text/javascript"></script>
+<script src="scripts/functions.js" type="text/javascript"></script>
+</body>
+</html>
