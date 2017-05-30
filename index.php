@@ -1,11 +1,33 @@
+<?php
+
+require '/src/facebook.php';
+
+$facebook = new Facebook(array(
+  'appId'  => '132214950677424',
+  'secret' => '349b49d8247a36752fd3835557f06ee2',
+));
+
+// See if there is a user from a cookie
+$user = $facebook->getUser();
+
+if ($user) {
+  try {
+    // Proceed knowing you have a logged in user who's authenticated.
+    $user_profile = $facebook->api('/me');
+  } catch (FacebookApiException $e) {
+    echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+    $user = null;
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <title>Colombia Vive</title>
 <meta charset="utf-8"/>
 <link rel="stylesheet" href="styles/style.css" type="text/css"/>
 <link rel="stylesheet" href="styles/prettyphoto.css" type="text/css"/>
 <link rel="stylesheet" href="styles/totop.css" type="text/css"/>
-
-
 
 </head>
 <body>
@@ -78,17 +100,42 @@ allowfullscreen></iframe>
             <div class="login">
 					<form action="validar.php" method="post"> 
 						<div id="fcb">
+                            <div id="fb-root">
+                                
+                            <?php if ($user) { ?>
+                                Your user profile is
+                            <pre>
+                            <?php print htmlspecialchars(print_r($user_profile, true)) ?>
+                            </pre>
+                                <?php } else { ?>
+                                <fb:login-button></fb:login-button>
+                                <?php } ?>
                             <div id="fb-root"></div>
-                                <script>(function(d, s, id) {
-                                            var js, fjs = d.getElementsByTagName(s)[0];
-                                            if (d.getElementById(id)) return;
-                                            js = d.createElement(s); js.id = id;
-                                            js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=132214950677424";
-                                            fjs.parentNode.insertBefore(js, fjs);
-                                        }(document, 'script', 'facebook-jssdk'));
+                                <script>
+                                    window.fbAsyncInit = function() {
+                                            FB.init({
+                                            appId: '<?php echo $facebook->getAppID() ?>',
+                                            cookie: true,
+                                            xfbml: true,
+                                            oauth: true
+                                        });
+                                        FB.Event.subscribe('auth.login', function(response) {
+                                            window.location.reload();
+                                        });
+                                        FB.Event.subscribe('auth.logout', function(response) {
+                                            window.location.reload();
+                                        });
+                                    };
+                                        (function() {
+                                            var e = document.createElement('script'); e.async = true;
+                                                e.src = document.location.protocol +
+                                                '//connect.facebook.net/en_US/all.js';
+                                                document.getElementById('fb-root').appendChild(e);
+                                            }());
                                 </script>
-                            </div>
-                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false">aqui</div>
+                           </div>
+                        </div>
+                           
                     	<h2>Ingresar</h2>
                         <div id="fcb"><a href="https://www.facebook.com"></a></div>
 						<input type="text" placeholder="&#128272;usuario" name="usuario"><br>
